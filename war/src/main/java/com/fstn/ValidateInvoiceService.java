@@ -15,7 +15,10 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/")
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class ValidateInvoiceService {
 
 	@Inject
@@ -25,9 +28,9 @@ public class ValidateInvoiceService {
 	}
 
 	@POST
-	@Path("/validateInvoice")
 	@Produces("application/json")
 	@Consumes("application/json")
+    @RequestMapping("/validateInvoice")
 	public Context validate(Context context) {
 		context.addCall(new StackCall(registrer.getApi().getName() + registrer.getApi().getAction()));
 		for (Api api : registrer.getChildApis()) {
@@ -42,14 +45,14 @@ public class ValidateInvoiceService {
 	}
 
 	@GET
-	@Path("/check")
+    @RequestMapping("/check")
 	public Response check() {
 		registrer.getApi();
 		return Response.ok().build();
 	}
 
 	@GET
-	@Path("/get")
+    @RequestMapping("/get")
 	@Produces("application/json")
 	public Invoice get() {
 		return new Invoice();
