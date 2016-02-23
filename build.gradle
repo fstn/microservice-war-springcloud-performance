@@ -1,0 +1,27 @@
+allprojects  {
+  apply plugin: 'maven'
+
+  group = 'com.fstn'
+version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.5
+  targetCompatibility = 1.5
+
+  
+  repositories {
+    mavenLocal()
+    
+    maven { url "https://repository.liferay.com/nexus/content/groups/public" }
+    maven { url "http://seraimsvn01:8081/nexus/content/groups/releaseGroup" }
+    maven { url "http://seraimsvn01:8081/nexus/content/groups/developmentGrp" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url "https://repository.jboss.org/nexus/content/groups/public-jboss/" }
+  }
+
+  
+  
+  
+}

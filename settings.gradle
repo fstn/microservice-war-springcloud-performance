@@ -1,0 +1,6 @@
+rootProject.name = 'parent'
+include ':framework'
+include ':war'
+
+project(':framework').projectDir = "$rootDir/Framework" as File
+project(':war').projectDir = "$rootDir/war" as File

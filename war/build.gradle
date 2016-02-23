@@ -1,0 +1,183 @@
+
+apply plugin: 'war'
+
+description = ''
+dependencies {
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version:'2.0.1'
+  compile project(':framework')
+    compile group: 'org.springframework.boot',name:'spring-boot-starter-web',version:'1.3.2.RELEASE'
+    compile group: 'org.springframework.boot',name:'spring-boot-starter',version:'1.3.2.RELEASE'
+    compile group: 'org.springframework.boot', name:':spring-boot-autoconfigure',version:'1.3.2.RELEASE'
+    testCompile group: 'junit', name: 'junit', version:'4.8.2'
+    providedCompile group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version:'2.2.1.GA'
+    providedCompile group: 'javax.xml.bind', name: 'jaxb-api', version:'2.2.12'
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
+    providedCompile group: 'javax.enterprise', name: 'cdi-api', version:'1.2'
+    providedCompile group: 'javax.ejb', name: 'javax.ejb-api', version:'3.2'
+}
+
+
+task api(type: War, dependsOn: classes) {
+    baseName = 'api'
+    archiveName "api.war"
+    filter{String line -> line.replaceAll("#PARENT_NAME#","")}
+    filter{String line -> line.replaceAll("#CURRENT_NAME#","api")}
+}
+task world(type: War, dependsOn: classes) {
+    baseName = 'world'
+    archiveName "world.war"
+    filter{String line -> line.replaceAll("#PARENT_NAME#","api")}
+    filter{String line -> line.replaceAll("#CURRENT_NAME#","world")}
+}
+task eu(type: War, dependsOn: classes) {
+    baseName = 'eu'
+    archiveName "eu.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","world")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","eu")
+    }
+}
+task fr(type: War, dependsOn: classes) {
+    baseName = 'fr'
+    archiveName "fr.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","eu")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","fr")
+    }
+}
+task lr(type: War, dependsOn: classes) {
+    baseName = 'lr'
+    archiveName "lr.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","fr")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","lr")
+    }
+}
+task ps1(type: War, dependsOn: classes) {
+    baseName = 'ps1'
+    archiveName "ps1.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","lr")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps1")
+    }
+}
+task ps2(type: War, dependsOn: classes) {
+    baseName = 'ps2'
+    archiveName "ps2.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps1")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps2")
+    }
+}
+task ps3(type: War, dependsOn: classes) {
+    baseName = 'ps3'
+    archiveName "ps3.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps2")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps3")
+    }
+}
+task ps4(type: War, dependsOn: classes) {
+    baseName = 'ps4'
+    archiveName "ps4.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps3")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps4")
+    }
+}
+task ps5(type: War, dependsOn: classes) {
+    baseName = 'ps5'
+    archiveName "ps5.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps4")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps5")
+    }
+}
+task ps6(type: War, dependsOn: classes) {
+    baseName = 'ps6'
+    archiveName "ps6.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps5")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps6")
+    }
+}
+task ps7(type: War, dependsOn: classes) {
+    baseName = 'ps7'
+    archiveName "ps7.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps6")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps7")
+    }
+}
+task ps8(type: War, dependsOn: classes) {
+    baseName = 'ps8'
+    archiveName "ps8.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps7")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps8")
+    }
+}
+task ps9(type: War, dependsOn: classes) {
+    baseName = 'ps9'
+    archiveName "ps9.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps8")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps9")
+    }
+}
+task ps10(type: War, dependsOn: classes) {
+    baseName = 'ps10'
+    archiveName "ps10.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps9")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps10")
+    }
+}
+task ps11(type: War, dependsOn: classes) {
+    baseName = 'ps11'
+    archiveName "ps11.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps10")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps11")
+    }
+}
+task ps12(type: War, dependsOn: classes) {
+    baseName = 'ps12'
+    archiveName "ps12.war"
+    filter{
+        String line -> line.replaceAll("#PARENT_NAME#","ps11")
+    }
+    filter{
+        String line -> line.replaceAll("#CURRENT_NAME#","ps12")
+    }
+}
+
+task wars(dependsOn: [world,eu,fr,lr,ps1,ps2,ps3,ps4,ps5,ps6,ps7,ps8,ps9,ps10,ps11,ps12])
